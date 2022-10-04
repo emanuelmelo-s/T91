@@ -12,7 +12,7 @@ class AlunoController extends Controller
     {
         
 
-        $data['alunos'] = Aluno::orderBy('id','nome')->paginate(5);
+        $data['alunos'] = Aluno::orderBy('id')->paginate(5);
         return view('alunos.index', $data);
     }
 

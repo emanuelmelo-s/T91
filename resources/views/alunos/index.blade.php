@@ -26,9 +26,9 @@
 <tr>
 <th>Alunos</th>
 <th>Nome</th>
-<th>Email/th>
+<th>Email</th>
 <th>Telefone</th>
-<th width="280px">Action</th>
+
 </tr>
 @foreach ($alunos as $aluno)
 <tr>
