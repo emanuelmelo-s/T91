@@ -45,7 +45,7 @@
                            <i class="bi bi-house-door-fill"></i>
                            Home
                         </a>
-                        <a class="nav-link" href="{{ route('lancamento.index') }}">
+                        <a class="nav-link" href="{{ route('l.index') }}">
                             <i class="bi bi-piggy-bank-fill"></i>
                             Alunos
                         </a>

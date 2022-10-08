@@ -37,8 +37,9 @@
 <td>{{ $aluno->email }}</td>
 <td>{{ $aluno->telefone }}</td>
 <td>
-<a class="btn btn-primary" href="{{ route('alunos.edit',['id' => $aluno->id]) }}">Editar</a>
-
+<form action="{{ route('alunos.destroy',$aluno->id) }}" method="Post">
+<a class="btn btn-primary" href="{{ route('alunos.edit',$aluno->id) }}">Editar</a>
+@csrf
 @method('DELETE')
 <button type="submit" class="btn btn-danger">Deletar</button>
 </form>

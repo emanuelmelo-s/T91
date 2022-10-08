@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
+use App\Models\Aluno;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\AlunoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->route('alunos.index');
 });
 
 Route::get('/dashboard', function () {
@@ -23,9 +25,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+Route::prefix('alunos')
+->middleware(['auth'])
+->controller(AlunoController::class)
+->group(function () {
+    Route::get('/' , 'index')->name('alunos.index');
+    Route::get('/novo', 'create')->name('alunos.create');
+    Route::get('/editar/{id}', 'edit')->name('alunos.edit');
+    Route::get('/mostrar/{id}', 'show')->name('alunos.show');
+    Route::post('/cadastrar', 'store')->name('alunos.store');
+    Route::post('/atualizar/{id}', 'update')->name('alunos.update');
+    Route::post('/deletar/{id}', 'destroy')->name('alunos.destroy');
+
+});
 
 
-Route::resource('alunos', AlunoController::class);
+//Route::resource('alunos', AlunoController::class);
 
 
 

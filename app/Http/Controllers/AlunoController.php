@@ -10,7 +10,7 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        
+       
 
         $data['alunos'] = Aluno::orderBy('id')->paginate(5);
         return view('alunos.index', $data);
@@ -43,8 +43,9 @@ class AlunoController extends Controller
         return view('alunos.show',compact('aluno'));
     }
 
-    public function edit(Aluno $aluno)
-    {
+    public function edit(int $id)
+    {      
+        $aluno = Aluno::find($id);
         return view('alunos.edit',compact('aluno'));
     }
 
@@ -53,18 +54,37 @@ class AlunoController extends Controller
         $request->validate([
             'nome' => 'required',
             'email' => 'required',
-            'telefone' => 'required'
+            'telefone' => 'required',
             ]);
-            $aluno = new Aluno();
+            $aluno = Aluno::find($id);
             $aluno->nome = $request->nome;
             $aluno->email = $request->email;
-            $aluno->telefone = $request->telefone;
+            $aluno->telefone = $request->telefone; 
             $aluno->save();
 
             return redirect()->route('alunos.index')
             ->with('Sucesso','Aluno foi editado com sucesso');
-
     }
+
+
+
+    // public function update(Request $request, $id)
+    // {
+    // $request->validate([
+    // 'name' => 'required',
+    // 'email' => 'required',
+    // 'address' => 'required',
+    // ]);
+    // $company = Company::find($id);
+    // $company->name = $request->name;
+    // $company->email = $request->email;
+    // $company->address = $request->address;
+    // $company->save();
+    // return redirect()->route('companies.index')
+    // ->with('success','Company Has Been updated successfully');
+    // }
+
+
 
     public function destroy(Aluno $aluno)
     {

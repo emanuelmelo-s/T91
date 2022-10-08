@@ -22,13 +22,13 @@
 {{ session('status') }}
 </div>
 @endif
-<form action="{{ route('alunos.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('alunos.store') }}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="row">
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong> Nome</strong>
-<input type="text" name="nome" class="form-control" placeholder="Alunos Nomes">
+<input type="text" name="nome" class="form-control" placeholder="Nome completo">
 @error('name')
 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 @enderror
@@ -37,7 +37,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>Email</strong>
-<input type="email" name="email" class="form-control" placeholder="email">
+<input type="email" name="email" class="form-control" placeholder="email@hotmail.com.br">
 @error('email')
 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 @enderror
@@ -46,13 +46,13 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>Telefone:</strong>
-<input type="text" name="telefone" class="form-control" placeholder="telefone">
+<input type="text" name="telefone" class="form-control" placeholder="(xx) x xxxx-xxxx">
 @error('address')
 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 @enderror
 </div>
 </div>
-<button type="submit" class="btn btn-primary ml-3">Enviar</button>
+<button type="submit" class="btn btn-primary ml-3">Cadastrar</button>
 </div>
 </form>
 </body>
